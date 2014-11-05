@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="/socket.io/socket.io.js" ></script>
+    <script src="javascripts/jquery.min.js" ></script>
+</head>
+
+<body>
+    <div class="chatbox">
+        <ul id="messages" class="clearfix"></ul>
+        <form action="">
+            <input id="in" autocomplete="off" type="text">
+            <input id="photo" type="file">
+            <button>发送</button>
+        </form>
+    </div>
+
+    <script>
+        var socket = io();
+        $('form').submit(function () {
+            socket.emit('chat message', $('#in').val());
+            $('#in').val(''); //clear the input value
+            return false;
+        });
+        socket.on('chat message', function (msg) {
+            $('#messages').append($('<li>').text(msg));
+        });
+        socket.on('image data', function (form, msg) {
+            $('#messages').append($("<li>").append('<img src="' + msg + '"/>'));
+        });
+
+        $("#photo").on("change", function () {
+            var file = this.files[0];
+            if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
+                var reader = new FileReader();
+                reader.onload = function (ev) {
+                    socket.emit('image data', ev.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        })
+    </script>
+</body>
+
+</html>

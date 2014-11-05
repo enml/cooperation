@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Coo</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="font-awesome-4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href='stylesheets/fullcalendar.min.css'>
+
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src='javascripts/moment.min.js'></script>
+    <script src='javascripts/fullcalendar.min.js'></script>
+
+    <script src="javascripts/controller.js" defer></script>
+    <script src="javascripts/canvasFilter.js" defer></script>
+    <script src="javascripts/dropFile.js" defer></script>
+    <script src="javascripts/templates.js" defer></script>
+    <script src="javascripts/chat.js" defer></script>
+    <script src="javascripts/doc.js" defer></script>
+</head>
+
+<body>
+    <div class="clearfix" id="navbar">
+        <div id="logo" class="left">
+            <a href="#" id="teamLogo"></a>
+        </div>
+        <nav class="clearfix left">
+            <ul class="navList left">
+                <li id="photo" class="n" data-content="phoContent" data-notice="phoNotice"><span class="notice" id="phoNotice"></span>图片</li>
+                <li id="todo" class="n" data-content="todoContent" data-notice="todoNotice"><span class="notice" id="todoNotice"></span>ToDo</li>
+                <li id="document" class="n" data-content="docContent" data-notice="docNotice"><span class="notice" id="docNotice"></span>文档</li>
+            </ul>
+            <ul class="navList right">
+                <li class="fa fa-envelope-o" id="chat" data-notice="chatNotice"><span class="notice" id="chatNotice"></span>
+                </li>
+                <li class="user"></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="warning "></div>
+    <article id="container"></article>
+
+</body>
+<script>
+</script>
+
+</html>
+
+
+
+
